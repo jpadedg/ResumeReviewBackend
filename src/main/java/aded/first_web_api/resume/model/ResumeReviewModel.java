@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
+import aded.first_web_api.common.enums.ProductType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import lombok.Setter;
 @Table(name = "resume_reviews")
 @Getter @Setter
 @NoArgsConstructor
-public class ResumeReview {
+public class ResumeReviewModel {
 
     @Id
     private UUID id;
@@ -24,6 +25,7 @@ public class ResumeReview {
     @Column(nullable = false, length = 64)
     private String resumeHash;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private InputType inputType;
 
@@ -52,7 +54,16 @@ public class ResumeReview {
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
 
-    public ResumeReview(Long userId, String resumeHash, InputType inputType, Integer costCoins) {
+    private String jobHash;
+
+    @Column(columnDefinition = "text")
+    private String jobDescription;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private ProductType productType;
+
+    public ResumeReviewModel(Long userId, String resumeHash, InputType inputType, Integer costCoins) {
         this.id = UUID.randomUUID();
         this.userId = userId;
         this.resumeHash = resumeHash;
