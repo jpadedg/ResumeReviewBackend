@@ -16,7 +16,6 @@ import aded.first_web_api.common.excepction.OpenAIException;
 import aded.first_web_api.common.util.ErrorUtil;
 import aded.first_web_api.common.util.HashUtil;
 import aded.first_web_api.common.util.TextUtil;
-import aded.first_web_api.resume.dto.AtsReviewResponse;
 import aded.first_web_api.resume.dto.ResumeReviewResponse;
 import aded.first_web_api.resume.model.InputType;
 import aded.first_web_api.resume.model.ResumeReviewModel;

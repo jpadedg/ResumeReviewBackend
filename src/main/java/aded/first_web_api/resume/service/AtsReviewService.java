@@ -15,6 +15,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import aded.first_web_api.common.excepction.BusinessException;
 import aded.first_web_api.common.excepction.OpenAIException;
 import aded.first_web_api.common.util.ErrorUtil;
 import aded.first_web_api.common.util.HashUtil;
@@ -58,15 +59,15 @@ public class AtsReviewService {
             throws IOException {
 
         if (userId == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "userId é obrigatório.");
+            throw new BusinessException("userId é obrigatório.");
         }
 
         if ((file == null || file.isEmpty()) && (text == null || text.isBlank())) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Envie 'file' (PDF/DOCX) ou 'text'.");
+            throw new BusinessException("Envie 'file' (PDF/DOCX) ou 'text'.");
         }
 
         if (jobDescription == null || jobDescription.isBlank()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "jobDescription é obrigatório.");
+            throw new BusinessException("jobDescription é obrigatório.");
         }
 
         // 1) Extrair texto do currículo
